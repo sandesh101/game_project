@@ -11,8 +11,6 @@ body {
 }
 
 .container {
-  /* height: 100vh;
-  width: 100%; */
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   overflow: hidden;
@@ -25,6 +23,11 @@ body {
   border-radius: 10px;
   box-shadow: 5px 5px 5px grey;
   padding: 10px;
+  overflow: hidden;
+}
+
+.game-container:hover .image img {
+  transform: scale(1.1);
 }
 
 .game-container > p {
@@ -54,4 +57,5 @@ body {
 .image img {
   width: 100%;
   height: auto;
+  transition: 0.2s ease-in;
 }
