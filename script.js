@@ -1,9 +1,18 @@
-const url = "https://games-details.p.rapidapi.com/page/1";
 const apiKey = "865b551d48msh1f0e39c31e0c5dap14d49fjsn09b433be9641";
 let container = document.querySelector(".container");
+let button = document.createElement("button");
+button.classList = "btn";
+button.textContent = "Load More";
+let page = 1;
 
-async function fetchData() {
+button.addEventListener("click", () => {
+  page += 1;
+  fetchData(page);
+});
+
+async function fetchData(pageNumber) {
   try {
+    const url = `https://games-details.p.rapidapi.com/page/${pageNumber}`;
     let response = await fetch(url, {
       headers: {
         "x-rapidapi-key": apiKey,
@@ -41,11 +50,12 @@ async function fetchData() {
           </div>
       `;
       container.append(gameContainer);
-      gameContainer.addEventListener("click", () => alert(item.id));
+      // gameContainer.addEventListener("click", () => alert(item.id));
     });
+    container.appendChild(button);
   } catch (error) {
     console.log(error);
   }
 }
 
-fetchData();
+fetchData(page);
